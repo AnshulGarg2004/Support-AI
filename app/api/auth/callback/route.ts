@@ -18,7 +18,7 @@ export const GET = async (req : NextRequest) => {
     response.cookies.set("accessToken", session.accessToken, {
         httpOnly : true,
         maxAge : 24 * 60 * 60 * 1000,
-        secure : true,
+        secure : false,
         path : '/'
     });
 
