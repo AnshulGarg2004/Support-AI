@@ -31,6 +31,8 @@ const DashboardClient = ({ ownerId }: { ownerId: string }) => {
         }
     }
 
+    
+
     useEffect(() => {
         const handleSettignsDetails = async () => {
             try {
