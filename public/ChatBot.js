@@ -1,7 +1,7 @@
 
 (function () {
 
-    const apiUrl = process.env.NEXT_PUBLIC_APP_URL;
+    const apiUrl = `${process.env.NEXT_PUBLIC_APP_URL}/api/chat`;
     const scriptTag = document.currentScript;
     const ownerId = scriptTag.getAttribute("data-owner-id");
 
