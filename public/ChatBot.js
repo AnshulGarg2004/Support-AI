@@ -130,9 +130,7 @@
                 method : "POST",
                 headers : {
                     "Content-Type" : "application/json",
-                    "Allow-Control-Allow-Origin": "*",
-                    "Access-Control-Allow-Methods": "POST, OPTIONS , GET",
-                    "Access-Control-Allow-Headers": "Content-Type",
+                    
                 },
                 body: JSON.stringify({ ownerId, message })
             });
