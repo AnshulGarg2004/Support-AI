@@ -4,11 +4,11 @@ import { GoogleGenAI } from "@google/genai";
 import { NextRequest, NextResponse } from "next/server"
 
 export const POST = async (req: NextRequest) => {
-    
+
 
     try {
 
-        const {ownerId, message } = await req.json();
+        const { ownerId, message } = await req.json();
         if (!ownerId || !message) {
             return NextResponse.json({ success: false, message: "Id or message is required" }, { status: 400 });
         }
@@ -61,12 +61,17 @@ export const POST = async (req: NextRequest) => {
 
         console.log("Response from ai: ", response);
 
-        const res =  NextResponse.json({ success: true, message: "response fetched successfuly", response }, { status: 200 ,  headers : {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "POST, OPTIONS , GET",
-        "Access-Control-Allow-Headers": "Content-Type",
-        
-    } });
+        const res = NextResponse.json({
+            success: true, message: response?.candidates?.[0]?.content?.parts?.[0]?.text ||
+                "Please contact support.", response
+        }, {
+            status: 200, headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "POST, OPTIONS , GET",
+                "Access-Control-Allow-Headers": "Content-Type",
+
+            }
+        });
         res.headers.set('Access-Control-Allow-Origin', '*');
         res.headers.set('Access-Control-Allow-Methods', 'POST, OPTIONS , GET');
         res.headers.set('Access-Control-Allow-Headers', 'Content-Type');
@@ -75,12 +80,14 @@ export const POST = async (req: NextRequest) => {
 
 
     } catch (error) {
-        const res =  NextResponse.json({ success: false, message: "Error in fetcing response from AI" }, { status: 500 ,  headers : {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "POST, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type",
-        
-    } });
+        const res = NextResponse.json({ success: false, message: "Error in fetcing response from AI" }, {
+            status: 500, headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "POST, OPTIONS",
+                "Access-Control-Allow-Headers": "Content-Type",
+
+            }
+        });
 
         res.headers.set('Access-Control-Allow-Origin', '*');
         res.headers.set('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -91,10 +98,12 @@ export const POST = async (req: NextRequest) => {
 
 }
 export const OPTIONS = async () => {
-    return NextResponse.json(null, {status : 201, headers : {
-      "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "POST, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type",
-        
-    }})
+    return NextResponse.json(null, {
+        status: 201, headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "POST, OPTIONS",
+            "Access-Control-Allow-Headers": "Content-Type",
+
+        }
+    })
 }

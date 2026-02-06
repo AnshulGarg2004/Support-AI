@@ -65,7 +65,7 @@
     </div>
 
     <div style="display: flex; border-top: 1px solid #e5e7eb; padding: 8px; gap: 6px; align-items: center;">
-        <input id="chat-input" style="flex: 1; padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 10px; font-size: 13px; outline: none;" type="text" placeholder="Type a message..."/>
+        <input id="chat-input" style="flex: 1; padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 10px; font-size: 13px; outline: none; color: #111;" type="text" placeholder="Type a message..."/>
         <button id="chat-send" style="cursor: pointer; border: none; color: #fff; background: #000; border-radius: 10px; font-size: 13px; padding: 9px 12px; min-width: 64px;" >Send</button>
     </div>`;
 
