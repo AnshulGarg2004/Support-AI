@@ -129,12 +129,15 @@
             const response = await fetch(apiUrl, {
                 method : "POST",
                 headers : {
-                    "Content-Type" : "application/json"
+                    "Content-Type" : "application/json",
+                    "Allow-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": "POST, OPTIONS , GET",
+                    "Access-Control-Allow-Headers": "Content-Type",
                 },
                 body: JSON.stringify({ ownerId, message })
             });
 
-            const data = response.json();
+            const data = await response.json();
 
             messageArea.removeChild(typing);
             addMessage(data || "Something went wrong", "ai")

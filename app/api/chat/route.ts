@@ -62,13 +62,13 @@ export const POST = async (req: NextRequest) => {
         console.log("Response from ai: ", response);
 
         const res =  NextResponse.json({ success: true, message: "response fetched successfuly", response }, { status: 200 ,  headers : {
-        "Allow-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "POST, OPTIONS , GET",
         "Access-Control-Allow-Headers": "Content-Type",
         
     } });
-        res.headers.set('Allow-Control-Allow-Origin', '*');
-        res.headers.set('Access-Control-Allow-Methods', 'POST, OPTIONS');
+        res.headers.set('Access-Control-Allow-Origin', '*');
+        res.headers.set('Access-Control-Allow-Methods', 'POST, OPTIONS , GET');
         res.headers.set('Access-Control-Allow-Headers', 'Content-Type');
 
         return res;
@@ -76,13 +76,13 @@ export const POST = async (req: NextRequest) => {
 
     } catch (error) {
         const res =  NextResponse.json({ success: false, message: "Error in fetcing response from AI" }, { status: 500 ,  headers : {
-        "Allow-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "POST, OPTIONS",
         "Access-Control-Allow-Headers": "Content-Type",
         
     } });
 
-        res.headers.set('Allow-Control-Allow-Origin', '*');
+        res.headers.set('Access-Control-Allow-Origin', '*');
         res.headers.set('Access-Control-Allow-Methods', 'POST, OPTIONS');
         res.headers.set('Access-Control-Allow-Headers', 'Content-Type');
 
@@ -92,9 +92,9 @@ export const POST = async (req: NextRequest) => {
 }
 export const OPTIONS = async () => {
     return NextResponse.json(null, {status : 201, headers : {
-        "Allow-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "POST, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type",
+      "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type",
         
     }})
 }
