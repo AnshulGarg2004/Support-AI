@@ -27,7 +27,7 @@ const connectDB = async () => {
         return cache.conn;
     } catch (error) {
         console.log("Error in connecting to db: ", error);
-        throw error; // ❗ important for serverless instead of process.exit
+        throw error; 
     }
 }
 

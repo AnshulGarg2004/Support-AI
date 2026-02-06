@@ -1,7 +1,7 @@
 
 (function () {
 
-    const apiUrl = `${process.env.NEXT_PUBLIC_APP_URL}/api/chat`;
+    const apiUrl = "https://support-ai-alpha.vercel.app/api/chat";
     const scriptTag = document.currentScript;
     const ownerId = scriptTag.getAttribute("data-owner-id");
 
