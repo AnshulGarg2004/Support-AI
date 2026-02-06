@@ -1,6 +1,6 @@
 import mongoose from "mongoose"
 
-const cache = global.mongoose;
+let cache = global.mongoose;
 
 if(!cache) {
     global.mongoose = {
